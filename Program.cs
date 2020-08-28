@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AddressBook
 {
@@ -42,9 +43,18 @@ namespace AddressBook
             addressBook.AddContact(sue);
             addressBook.AddContact(juan);
 
-            // Try to addd a contact a second time
-            addressBook.AddContact(sue);
+            // Try to add a contact a second time (try/catch)
+            try
+            {
+                addressBook.AddContact(sue);
+            }
 
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("tried to add same contact twice");
+            }
+
+            //end of try/catch
             // Create a list of emails that match our Contacts
             List<string> emails = new List<string>()
             {
