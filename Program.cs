@@ -68,7 +68,6 @@ namespace AddressBook
 
             emails.Insert(1, "not.in.addressbook@email.com");
 
-            //END OF SECOND ERROR TRY CATCH
             //  Search the AddressBook by email and print the information about each Contact
             foreach (string email in emails)
             {
@@ -86,7 +85,7 @@ namespace AddressBook
                 {
                     Console.WriteLine("Email Does Not Match Contact");
                 }
-
+                //END OF SECOND ERROR TRY CATCH
             }
 
         }
