@@ -64,17 +64,32 @@ namespace AddressBook
             };
 
             // Insert an email that does NOT match a Contact
+            // Try to add a contact a second time (try/catch)
+
             emails.Insert(1, "not.in.addressbook@email.com");
 
+            //END OF SECOND ERROR TRY CATCH
             //  Search the AddressBook by email and print the information about each Contact
             foreach (string email in emails)
             {
-                Contact contact = addressBook.GetByEmail(email);
-                Console.WriteLine("----------------------------");
-                Console.WriteLine($"Name: {contact.FullName}");
-                Console.WriteLine($"Email: {contact.Email}");
-                Console.WriteLine($"Address: {contact.Address}");
+
+                try
+                {
+                    Contact contact = addressBook.GetByEmail(email);
+
+                    Console.WriteLine("----------------------------");
+                    Console.WriteLine($"Name: {contact.FullName}");
+                    Console.WriteLine($"Email: {contact.Email}");
+                    Console.WriteLine($"Address: {contact.Address}");
+                }
+                catch (KeyNotFoundException ex)
+                {
+                    Console.WriteLine("Email Does Not Match Contact");
+                }
+
             }
+
         }
+
     }
 }
